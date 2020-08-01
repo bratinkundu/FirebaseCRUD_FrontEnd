@@ -1,0 +1,50 @@
+<section>
+    <div class="container main">
+        <div class="cardbg shadow">
+            <mat-toolbar color="primary">
+                <mat-toolbar-row>
+                    <span>Sign In</span>
+                </mat-toolbar-row>
+            </mat-toolbar>
+            <div class="d-flex flex-column">
+
+                <form [formGroup]="loginForm" class="example-form mt-3 pr-2 pl-2">
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Username</mat-label>
+                        <input matInput #username type="email" formControlName="userName" style="padding-left: 10px;">
+                        <button mat-button *ngIf="username.value" matSuffix mat-icon-button aria-label="Clear"
+                            (click)="loginForm.get('userName').reset()">
+                            <mat-icon style="font-size: small;">close</mat-icon>
+                        </button>
+                        <mat-error *ngIf="loginForm.get('userName').hasError('required')">
+                            This field is required!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput #password type="password" formControlName="Password"
+                            style="padding-left: 10px;">
+                        <button mat-button *ngIf="password.value" matSuffix mat-icon-button aria-label="Clear"
+                            (click)="loginForm.get('Password').reset()">
+                            <mat-icon style="font-size: small;">close</mat-icon>
+                        </button>
+                        <mat-error *ngIf="loginForm.get('Password').hasError('required')">
+                            This field is required!
+                        </mat-error>
+                    </mat-form-field>
+                </form>
+
+                <div class="text-center" style="font-size: 15px;">
+                    Don't have an account? <a mat-button routerLink="../register">Register Here</a>
+                </div>
+                <div class="text-center" style="font-size: 15px;">
+                    <a mat-button>Forgot Password</a>
+                </div>
+                <div class="text-center">
+                    <button mat-flat-button color="accent" [disabled]="loginForm.invalid">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
